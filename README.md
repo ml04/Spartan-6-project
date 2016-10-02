@@ -7,4 +7,6 @@ Pins to added ports for VGA controller are defined in system.ucf
 
 VHDL code for defining graphics are in user_logic.vhd
 
+Main logic of the game(handling buffers and registers) is in main_code.c
+
 
