@@ -1,0 +1,7 @@
+INFILE=D:\DRS\KV_Lekic\EDK\implementation\system.ncd
+OUTFILE=D:\DRS\KV_Lekic\EDK\implementation\system.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=D:\DRS\KV_Lekic\EDK\implementation
+LICENSE=ISE
+USER_INFO=211053655_1777509436_210608337_805

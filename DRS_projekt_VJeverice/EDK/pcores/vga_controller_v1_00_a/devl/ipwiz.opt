@@ -1,0 +1,9 @@
+-batch 
+-create vga_controller 
+-ver 1.00.a 
+-dir "D:\DRS\KV_Lekic\EDK" 
+-lang vhdl 
+-bus plbv46 s 
+-reg 10 
+-xps 
+-driver 

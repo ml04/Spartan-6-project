@@ -1,0 +1,38 @@
+10:54:23 **** Auto Build of configuration Debug for project project ****
+make all 
+'Building file: ../src/helloworld.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../project_bsp/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.c -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:48:20: warning: unused variable 'j' [-Wunused-variable]
+../src/helloworld.c: In function 'Ps2ReceiveData':
+../src/helloworld.c:248:6: warning: variable 'BytesReceived' set but not used [-Wunused-but-set-variable]
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: project.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../project_bsp/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.c -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "project.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: project.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size project.elf  |tee "project.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   7486	    308	   2212	  10006	   2716	project.elf
+'Finished building: project.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck project.elf -hw ../../EDK_hw_platform/system.xml -pe microblaze_0  |tee "project.elf.elfcheck"
+elfcheck
+Xilinx EDK 14.7 Build EDK_P.20131013
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../EDK_hw_platform/system.xml -pe microblaze_0
+project.elf 
+
+ELF file	: project.elf
+elfcheck passed.
+'Finished building: project.elf.elfcheck'
+' '
+
+10:54:25 Build Finished (took 1s.832ms)
+

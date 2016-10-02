@@ -1,0 +1,120 @@
+
+#include <stdio.h>
+#include "platform.h"
+#include "xparameters.h"
+#include "vga_controller.h"
+#include "xgpio.h"
+#include "xps2.h"
+
+#define KEYBOARD_ACK 0xFA
+
+int Ps2Initialize(u16 Ps2DeviceId);
+int Ps2ReceiveData();
+
+static XPs2 Ps2Inst;
+u8 SendCODE = 0xED;
+u8 RxBuffer;
+int location=0;
+
+void print(char *str);
+
+int main()
+{
+    int Status, i, j;
+
+    Status = Ps2Initialize(XPAR_PS2_0_DEVICE_ID);
+    	if (Status != XST_SUCCESS) {
+    		return XST_FAILURE;
+    	}
+
+
+    while(1){
+    	do{
+    		Status = Ps2ReceiveData();
+    		    	if (Status != XST_SUCCESS){
+    		    		return XST_FAILURE;
+    		    		print("Data receiving FAILED!\r\n");
+    		    	}
+    	} while(RxBuffer!=0xF0);
+
+    	Status = Ps2ReceiveData();
+    	if (Status != XST_SUCCESS){
+    		return XST_FAILURE;
+    		print("Data receiving FAILED!\r\n");
+    	}
+    	else
+    		/*xil_printf("Vrijednost primljena od tipkovnice je 0x%x\r\n", RxBuffer);*/
+
+    	if(RxBuffer == 0x1C){
+    		location++;
+    	}
+
+
+    		/*if(pritisnuta_tipka_A)
+    			lokacija_prvog++;
+    		else if(pritisnuta_tipka_B)
+    			lokacija_drugog++;*/
+
+
+    		VGA_CONTROLLER_mWriteSlaveReg1(XPAR_VGA_CONTROLLER_0_BASEADDR,0, location);
+
+    	}
+
+
+
+
+
+
+    while(1){
+    	VGA_CONTROLLER_mWriteSlaveReg0(XPAR_VGA_CONTROLLER_0_BASEADDR,0, 200);
+    	VGA_CONTROLLER_mWriteSlaveReg1(XPAR_VGA_CONTROLLER_0_BASEADDR,0, location);
+
+    }
+
+
+
+
+
+    return 0;
+}
+
+int Ps2Initialize(u16 Ps2DeviceId)
+{
+	XPs2_Config *Ps2ConfigPtr;
+
+	//******Dohvatiti konfiguraciju PS2 suèelja, povratnu vrijednost spremiti u varijablu Ps2ConfigPtr*******//
+
+	Ps2ConfigPtr = XPs2_LookupConfig(Ps2DeviceId);
+	//******************************************************************************************************//
+	if (Ps2ConfigPtr == NULL) {
+		print("Config Lookup FAILED!\r\n");
+		return XST_FAILURE;
+	}
+	else
+		print("Config Lookup SUCCESS!\r\n");
+	//*************************************Inicijalizirati PS2 kontroler*************************************//
+
+	XPs2_CfgInitialize(&Ps2Inst, Ps2ConfigPtr, Ps2ConfigPtr->BaseAddress);
+		//*******************************************************************************************************//
+
+	print("PS2 Initialize SUCCESS!\r\n");
+	return XST_SUCCESS;
+ }
+
+int Ps2ReceiveData(){
+
+	u32 StatusReg;
+	u32 BytesReceived;
+
+	do {
+		StatusReg = XPs2_GetStatus(&Ps2Inst);
+	}while((StatusReg & XPS2_STATUS_RX_FULL) == 0);
+
+
+	//***Primiti 1 byte podataka putem PS2 sucelja, povratnu vrijdnost spremiti u varijablu BytesReceived****//
+BytesReceived = XPs2_Recv(&Ps2Inst, &RxBuffer, 1);
+
+	//*******************************************************************************************************//
+
+	return XST_SUCCESS;
+  }

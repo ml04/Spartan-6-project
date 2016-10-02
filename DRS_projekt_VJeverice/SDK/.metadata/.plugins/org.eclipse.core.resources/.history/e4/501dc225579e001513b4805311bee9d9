@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+#include "platform.h"
+#include "xparameters.h"
+#include "vga_controller.h"
+#include "xgpio.h"
+
+void print(char *str);
+
+int main()
+{
+    init_platform();
+
+    int location;
+
+    location = 100;
+
+   XGpio switches;
+   int switchesValue;
+   XGpio_Initialize(&switches, XPAR_DIP_SWITCHES_8BITS_DEVICE_ID);
+   XGpio_SetDataDirection(&switches, 1, 0xffffffff);
+
+
+    while(1){
+    	VGA_CONTROLLER_mWriteReg(XPAR_VGA_CONTROLLER_0_BASEADDR,0, 100);
+    	VGA_CONTROLLER_mWriteReg(XPAR_VGA_CONTROLLER_0_BASEADDR,31, 100);
+
+
+    }
+    return 0;
+}

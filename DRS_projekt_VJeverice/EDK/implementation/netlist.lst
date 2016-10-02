@@ -1,0 +1,18 @@
+D:\DRS\KV_Lekic\EDK\implementation\system.ngc 1452674722
+D:/DRS/KV_Lekic/EDK/implementation/system_dip_switches_8bits_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_push_buttons_4bits_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_rs232_uart_1_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_clock_generator_0_wrapper.ngc 1452674688
+D:/DRS/KV_Lekic/EDK/implementation/system_proc_sys_reset_0_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_vga_controller_0_wrapper.ngc 1452674682
+D:/DRS/KV_Lekic/EDK/implementation/system_microblaze_0_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_mb_plb_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_ilmb_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_dlmb_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_dlmb_cntlr_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_ilmb_cntlr_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_ps2_mouse_keyboard_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_mdm_0_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_lmb_bram_wrapper.ngc 1452674612
+D:/DRS/KV_Lekic/EDK/implementation/system_mem_bus_mux_0_wrapper.ngc 1452674612
+OK
